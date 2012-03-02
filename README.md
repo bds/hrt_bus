@@ -8,11 +8,53 @@ Ruby gem for public HRT bus location data
 
 ### A collection of HRT buses as Ruby ActiveModel objects
 
-  HrtBus::Bus.active_buses
+    ruby-1.9.2-p180 :001 > HrtBus::Bus.active_buses
+
+    [
+        [0] #<HrtBus::Bus:0x101841ac8
+            attr_accessor :id = "4020",
+            attr_accessor :lat = "36.8088548",
+            attr_accessor :lon = "-76.3534049",
+            attr_accessor :route_id = nil,
+            attr_accessor :time = #<DateTime:0x101876408
+            >
+        >,
+        [1] #<HrtBus::Bus:0x100a44c68
+            attr_accessor :id = "1233",
+            attr_accessor :lat = "36.9181620",
+            attr_accessor :lon = "-76.1926839",
+            attr_accessor :route_id = "8",
+            attr_accessor :time = #<DateTime:0x100a44e20
+            >
+        >
+    ]
+    ...
      
 ### A collection of HRT buses as JSON
 
-    HrtBus::Bus.active_buses.to_json
+    ruby-1.9.2-p180 :001 > HrtBus::Bus.active_buses.to_json
+
+    [
+       {
+          "bus":{
+             "id":"4020",
+             "lat":"36.8088548",
+             "lon":"-76.3534049",
+             "route_id":null,
+             "time":"2012-03-02T13:34:16+00:00"
+          }
+       },
+       {
+          "bus":{
+             "id":"1233",
+             "lat":"36.9181620",
+             "lon":"-76.1926839",
+             "route_id":"8",
+             "time":"2012-03-02T13:34:16+00:00"
+          }
+       }
+    ]
+    ...
 
 ### Buses from a specific route
 

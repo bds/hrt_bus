@@ -66,9 +66,9 @@ module HrtBus
         time = HrtBus::Parse.time([time, date].join(""))
         lat, lon = HrtBus::Parse.geo(lat_lon)
 
-        if valid == "V"
-          buses << new(:id => id, :time => time, :route_id => route_id, :lat => lat, :lon => lon)
-        end
+        bus = new(:id => id, :time => time, :route_id => route_id, :lat => lat, :lon => lon)
+
+        buses << bus if bus.valid?
       end
       buses
     end

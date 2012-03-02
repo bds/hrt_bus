@@ -40,7 +40,7 @@ Ruby gem for public HRT bus location data
              "id":"4020",
              "lat":"36.8088548",
              "lon":"-76.3534049",
-             "route_id":null,
+             "route_id":"105",
              "time":"2012-03-02T13:34:16+00:00"
           }
        },

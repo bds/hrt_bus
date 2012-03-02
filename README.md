@@ -15,7 +15,7 @@ Ruby gem for public HRT bus location data
             attr_accessor :id = "4020",
             attr_accessor :lat = "36.8088548",
             attr_accessor :lon = "-76.3534049",
-            attr_accessor :route_id = nil,
+            attr_accessor :route_id = "105",
             attr_accessor :time = #<DateTime:0x101876408
             >
         >,

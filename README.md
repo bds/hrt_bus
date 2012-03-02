@@ -2,31 +2,31 @@
 
 Ruby gem for public HRT bus location data
 
-## Installation
+### Installation
 
-  gem intall hrt_bus
+    gem intall hrt_bus
 
-## A collection of HRT buses as Ruby ActiveModel objects
+### A collection of HRT buses as Ruby ActiveModel objects
 
   HrtBus::Bus.active_buses
      
-## A collection of HRT buses as JSON
+### A collection of HRT buses as JSON
 
-  HrtBus::Bus.active_buses.to_json
+    HrtBus::Bus.active_buses.to_json
 
-## Buses from a specific route
+### Buses from a specific route
 
-  HrtBus::Bus.active_buses.select { |bus| bus.route_id == "105" }
+    HrtBus::Bus.active_buses.select { |bus| bus.route_id == "105" }
 
-## Generate a static Google Map for a bus
+### Generate a static Google Map for a bus
 
-  HrtBus::Bus.active_buses.select { |bus| bus.route_id == "105" }.first.static_map
+    HrtBus::Bus.active_buses.select { |bus| bus.route_id == "105" }.first.static_map
 
-  ![map]("examples/map.png")
+    ![map](examples/map.png)
 
-## Determine if a bus is valid
+### Determine if a bus is valid
 
-  HrtBus::Bus.active_buses.last.valid?
+    HrtBus::Bus.active_buses.last.valid?
 
 ## Contributing to hrt_bus
  

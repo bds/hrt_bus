@@ -4,7 +4,7 @@ Ruby gem for public HRT bus location data
 
 ### Installation
 
-    gem intall hrt_bus
+    gem install hrt_bus
 
 ### A collection of HRT buses as Ruby ActiveModel objects
 

@@ -64,7 +64,7 @@ Ruby gem for public HRT bus location data
 
     HrtBus::Bus.active_buses.select { |bus| bus.route_id == "105" }.first.static_map
 
-![map](examples/map.png)
+![map](http://github.com/bds/hrt_bus/raw/master/examples/map.png)
 
 ### Determine if a bus is valid
 

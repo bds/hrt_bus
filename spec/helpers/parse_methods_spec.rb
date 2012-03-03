@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'factories/bus'
 
-describe HrtBus::Bus do
+describe HrtBus::Parse do
   describe "time" do
     let(:parsed_time) { HrtBus::Parse.time("01:35:26", "03/03") }
 

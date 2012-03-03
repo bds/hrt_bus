@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = HrtBus::VERSION
   s.authors     = ["Brian Douglas Smith"]
   s.email       = ["m.b1205@gmail.com"]
-  s.homepage    = ""
-  s.summary     = %q{Ruby gem for public HRT bus location data}
-  s.description = %q{Ruby gem for public HRT bus location data}
+  s.homepage    = "https://github.com/bds/hrt_bus"
+  s.summary     = %q{Ruby gem for real-time public HRT bus location data}
+  s.description = %q{Ruby gem for real-time public HRT bus location data}
 
   s.rubyforge_project = "hrt_bus"
 

@@ -2,7 +2,10 @@ module HrtBus
 
   class Parse
 
-    def self.time(data)
+    def self.time(time, date)
+      return if time.nil? || date.nil?
+
+      data = [time, date].join(" ")
       DateTime.strptime(data, '%H:%M:%S %m/%d')        
     end
 

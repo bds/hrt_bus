@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'factories/bus'
-require 'tempfile'
 
 describe HrtBus::Bus do
 

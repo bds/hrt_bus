@@ -53,24 +53,22 @@ module HrtBus
         raise curl.response_code
       end
 
-      parsed = ::CSV.new(curl.body_str, { :headers => true })
+      parsed = ::CSV.new(curl.body_str, { :headers => true, :skip_blanks => true })
 
       parsed.each do |row|
-        unless row.empty?
-          time, date, id, lat_lon, valid, route_id  = row[0],
-                                                      row[1],
-                                                      row[2],
-                                                      row[3],
-                                                      row[4],
-                                                      row[7]
-  
-          time = HrtBus::Parse.time([time, date].join(" "))
-          lat, lon = HrtBus::Parse.geo(lat_lon)
-  
-          bus = new(:id => id, :time => time, :route_id => route_id, :lat => lat, :lon => lon)
-  
-          buses << bus if bus.valid?
-        end
+        time, date, id, lat_lon, valid, route_id  = row[0],
+                                                    row[1],
+                                                    row[2],
+                                                    row[3],
+                                                    row[4],
+                                                    row[7]
+
+        time     = HrtBus::Parse.time(time, date)
+        lat, lon = HrtBus::Parse.geo(lat_lon)
+
+        bus = new(:id => id, :time => time, :route_id => route_id, :lat => lat, :lon => lon)
+
+        buses << bus if bus.valid?
       end
       buses
     end
@@ -85,7 +83,7 @@ module HrtBus
         raise curl.response_code
       end
 
-      parsed = ::CSV.new(curl.body_str, { :headers => true })
+      parsed = ::CSV.new(curl.body_str, { :headers => true, :skip_blanks => true })
 
       parsed.each do |row|
         time, date, id, lat_lon, valid, route_id  = row[0],
@@ -95,7 +93,7 @@ module HrtBus
                                                     row[4],
                                                     row[7]
 
-        time = HrtBus::Parse.time([time, date].join(""))
+        time     = HrtBus::Parse.time(time, date)
         lat, lon = HrtBus::Parse.geo(lat_lon)
 
         buses << new(:id => id, :time => time, :route_id => route_id, :lat => lat, :lon => lon)

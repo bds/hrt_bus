@@ -14,3 +14,4 @@
 > 0.0.4
 
 * Added HrtBus#Bus.all
+* Fix empty CSV row, improper time format - bschoenfeld

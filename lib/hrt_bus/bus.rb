@@ -63,7 +63,7 @@ module HrtBus
                                                     row[4],
                                                     row[7]
 
-        time = HrtBus::Parse.time([time, date].join(""))
+        time = HrtBus::Parse.time([time, date].join(" "))
         lat, lon = HrtBus::Parse.geo(lat_lon)
 
         bus = new(:id => id, :time => time, :route_id => route_id, :lat => lat, :lon => lon)

@@ -1,12 +1,16 @@
-* 0.0.1
+> 0.0.1
 
-  > Inital release
+* Inital release
 
-* 0.0.2
+> 0.0.2
 
-  > README
+* README
 
-* 0.0.3
+> 0.0.3
 
-  > Validation for bus.id
-  > Spec cleanup
+* Validation for bus.id
+* Spec cleanup
+
+> 0.0.4
+
+* Added HrtBus#Bus.all

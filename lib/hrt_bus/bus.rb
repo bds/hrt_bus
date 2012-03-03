@@ -73,6 +73,34 @@ module HrtBus
       buses
     end
 
+    def self.all
+      buses = []
+      curl = ::Curl::Easy.perform(HrtBus::Config.buses_uri) do |c|
+        c.follow_location = true
+      end
+
+      unless curl.response_code == 226
+        raise curl.response_code
+      end
+
+      parsed = ::CSV.new(curl.body_str, { :headers => true })
+
+      parsed.each do |row|
+        time, date, id, lat_lon, valid, route_id  = row[0],
+                                                    row[1],
+                                                    row[2],
+                                                    row[3],
+                                                    row[4],
+                                                    row[7]
+
+        time = HrtBus::Parse.time([time, date].join(""))
+        lat, lon = HrtBus::Parse.geo(lat_lon)
+
+        buses << new(:id => id, :time => time, :route_id => route_id, :lat => lat, :lon => lon)
+      end
+      buses
+    end
+
   end
 
 end

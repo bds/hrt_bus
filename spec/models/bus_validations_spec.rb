@@ -6,6 +6,13 @@ describe HrtBus::Bus do
 
     let(:bus) { Factory.build(:bus) }
 
+    it "should validate_presence_of :id" do
+      bus.should be_valid
+      bus.id = nil
+      bus.should_not be_valid
+      bus.errors.messages[:id].first.should match(/can't be blank/)
+    end
+
     it "should validate_presence_of :time" do
       bus.should be_valid
       bus.time = nil

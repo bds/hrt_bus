@@ -11,7 +11,7 @@ module HrtBus
     validates_numericality_of :lat, greater_than: 0
     validates_numericality_of :lon, less_than: 0
 
-    validates :time, :lat, :lon, :route_id, :presence => true
+    validates :id, :time, :lat, :lon, :route_id, :presence => true
 
     def initialize(attributes={})
       self.attributes = attributes

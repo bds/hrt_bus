@@ -10,14 +10,15 @@ Ruby gem for public HRT bus location data
 
 ### HRT bus for a specific route as Ruby ActiveModel object
 
-    HrtBus::Rider.new(:route_id => "15", :direction => "inbound").bus
+    HrtBus::Rider.new(:route_id => "20", :direction => "inbound").bus
 
-    #<HrtBus::Bus:0x10151b380
-        attr_accessor :id = "2020",
-        attr_accessor :lat = "36.9161257",
-        attr_accessor :lon = "-76.3075035",
-        attr_accessor :route_id = "15",
-        attr_accessor :time = Sat, 03 Mar 2012 21:15:34 +0000,
+    #<HrtBus::Bus:0x1028d40c0
+      attr_accessor :direction = "inbound",
+      attr_accessor :id = "2021",
+      attr_accessor :lat = "36.8597919",
+      attr_accessor :lon = "-76.2845680",
+      attr_accessor :route_id = "20",
+      attr_accessor :time = Sat, 03 Mar 2012 23:24:28 +0000,
     >
 
 ### Generate a static Google Map for a bus
@@ -28,48 +29,51 @@ Ruby gem for public HRT bus location data
 
 ### A collection of active HRT buses
 
-    ruby-1.9.2-p180 :001 > HrtBus::Bus.active_buses
+    HrtBus::Bus.active_buses
 
     [
-        [ 0] #<HrtBus::Bus:0x10290a5f8
-            attr_accessor :id = "1810",
-            attr_accessor :lat = "36.8596125",
-            attr_accessor :lon = "-76.2845262",
-            attr_accessor :route_id = "6",
-            attr_accessor :time = Sat, 03 Mar 2012 21:15:10 +0000,
+        [0] #<HrtBus::Bus:0x100afcac0
+            attr_accessor :direction = "outbound",
+            attr_accessor :id = "1909",
+            attr_accessor :lat = "36.9711193",
+            attr_accessor :lon = "-76.4097323",
+            attr_accessor :route_id = "107",
+            attr_accessor :time = Sat, 03 Mar 2012 23:25:35 +0000,
         >,
-        [ 1] #<HrtBus::Bus:0x10138af48
-            attr_accessor :id = "2020",
-            attr_accessor :lat = "36.9161257",
-            attr_accessor :lon = "-76.3075035",
-            attr_accessor :route_id = "15",
-            attr_accessor :time = Sat, 03 Mar 2012 21:15:34 +0000,
-        >,
-
+        [1] #<HrtBus::Bus:0x102956ef8
+            attr_accessor :direction = "outbound",
+            attr_accessor :id = "1214",
+            attr_accessor :lat = "36.9881023",
+            attr_accessor :lon = "-76.4242998",
+            attr_accessor :route_id = "103",
+            attr_accessor :time = Sat, 03 Mar 2012 23:26:02 +0000,
+        >
     ]
     ...
      
 ### A collection of HRT buses as JSON
 
-    ruby-1.9.2-p180 :001 > HrtBus::Bus.active_buses.to_json
+    HrtBus::Bus.active_buses.to_json
 
     [
        {
           "bus":{
-             "id":"4020",
-             "lat":"36.8088548",
-             "lon":"-76.3534049",
-             "route_id":"105",
-             "time":"2012-03-02T13:34:16+00:00"
+             "direction":"inbound",
+             "id":"1218",
+             "lat":"37.0145065",
+             "lon":"-76.3646452",
+             "route_id":"103",
+             "time":"2012-03-03T23:26:20+00:00"
           }
        },
        {
           "bus":{
-             "id":"1233",
-             "lat":"36.9181620",
-             "lon":"-76.1926839",
-             "route_id":"8",
-             "time":"2012-03-02T13:34:16+00:00"
+             "direction":"outbound",
+             "id":"2026",
+             "lat":"36.8537111",
+             "lon":"-76.1759363",
+             "route_id":"20",
+             "time":"2012-03-03T23:26:29+00:00"
           }
        }
     ]

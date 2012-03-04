@@ -27,30 +27,6 @@ Ruby gem for public HRT bus location data
 
 ![map](http://github.com/bds/hrt_bus/raw/master/examples/map.png)
 
-### A collection of active HRT buses
-
-    HrtBus::Bus.active_buses
-
-    [
-        [0] #<HrtBus::Bus:0x100afcac0
-            attr_accessor :direction = "outbound",
-            attr_accessor :id = "1909",
-            attr_accessor :lat = "36.9711193",
-            attr_accessor :lon = "-76.4097323",
-            attr_accessor :route_id = "107",
-            attr_accessor :time = Sat, 03 Mar 2012 23:25:35 +0000,
-        >,
-        [1] #<HrtBus::Bus:0x102956ef8
-            attr_accessor :direction = "outbound",
-            attr_accessor :id = "1214",
-            attr_accessor :lat = "36.9881023",
-            attr_accessor :lon = "-76.4242998",
-            attr_accessor :route_id = "103",
-            attr_accessor :time = Sat, 03 Mar 2012 23:26:02 +0000,
-        >
-    ]
-    ...
-     
 ### A collection of HRT buses as JSON
 
     HrtBus::Bus.active_buses.to_json
@@ -81,7 +57,24 @@ Ruby gem for public HRT bus location data
 
 ### Determine if a bus is valid
 
-    HrtBus::Bus.active_buses.last.valid?
+    HrtBus::Bus.active_buses.select { |bus| bus.route_id => "2" }.first.valid?
+
+### Send yourself a SMS or Tweet when your bus is close!
+
+    (1..15).each do |i|
+
+      rider =  HrtBus::Rider.new(:route_id  => "2",
+                                 :direction => "inbound",
+                                 :lat       => "36.870347",
+                                 :lon       => "-76.301163" )
+
+      if rider.bus.present? && rider.distance_to_bus <= 3
+        # Do something really cool like send a SMS or Tweet!
+      end
+
+      sleep 30
+
+    end
 
 ## Contributing to hrt_bus
  

@@ -15,3 +15,9 @@
 
 * Added HrtBus#Bus.all
 * Fix empty CSV row, improper time format - bschoenfeld
+
+> 0.0.5
+
+* Added Rider model
+* Find buses by route_id and direction
+

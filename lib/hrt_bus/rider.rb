@@ -8,10 +8,10 @@ module HrtBus
     attr_accessor *ATTRIBUTES
 
     validates_numericality_of :route_id, greater_than: 0
-    validates_numericality_of :lat, greater_than: 0
-    validates_numericality_of :lon, less_than: 0
+    validates_numericality_of :lat, greater_than: 0, :if => :lat
+    validates_numericality_of :lon, less_than: 0,    :if => :lon
 
-    validates :time, :lat, :lon, :route_id, :presence => true
+    validates :route_id, :presence => true
 
     def initialize(attributes={})
       self.attributes = attributes

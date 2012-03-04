@@ -39,7 +39,7 @@ module HrtBus
     end
 
     def distance_to_bus
-      return 999999999 unless bus.present?
+      return 999999999 unless bus.present? && bus.valid?
       distance = Haversine.distance(self.lat.to_f, self.lon.to_f, bus.lat.to_f, bus.lon.to_f)
       distance.to_miles
     end

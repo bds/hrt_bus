@@ -6,13 +6,6 @@ describe HrtBus::Rider do
 
     let(:rider) { Factory.build(:rider) }
 
-    it "should validate_presence_of :id" do
-      rider.should be_valid
-      rider.id = nil
-      rider.should_not be_valid
-      rider.errors.messages[:id].first.should match(/can't be blank/)
-    end
-
     it "should validate_presence_of :time" do
       rider.should be_valid
       rider.time = nil

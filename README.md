@@ -8,7 +8,7 @@ Ruby gem for public HRT bus location data
 
 ## Examples
 
-### HRT bus for a specific route as Ruby ActiveModel object
+### HRT bus as a Ruby ActiveModel object
 
     HrtBus::Rider.new(:route_id => "20", :direction => "inbound").bus
 

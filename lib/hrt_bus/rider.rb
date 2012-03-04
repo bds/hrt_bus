@@ -34,8 +34,8 @@ module HrtBus
       send(key)
     end
 
-    def buses
-      HrtBus::Bus.active_buses.select { |bus| bus.route_id == self.route_id }
+    def bus
+      HrtBus::Bus.active_buses.select { |bus| bus.route_id == self.route_id }.last
     end
 
   end

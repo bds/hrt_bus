@@ -13,6 +13,37 @@ describe HrtBus::Bus do
       bus.errors.messages[:id].first.should match(/can't be blank/)
     end
 
+    context "direction" do
+
+      it "should validate_presence_of :direction" do
+        bus.should be_valid
+        bus.direction = nil
+        bus.should_not be_valid
+        bus.errors.messages[:direction].first.should match(/is not included in the list/)
+      end
+
+      it "should allow values inbound and outbound" do
+        bus.should be_valid
+
+        bus.direction = "inbound"
+        bus.should be_valid
+
+        bus.direction = "outbound"
+        bus.should be_valid
+      end
+
+      it "should not allow values 1 or 2" do
+        bus.should be_valid
+
+        bus.direction = "1"
+        bus.should_not be_valid
+
+        bus.direction = "2"
+        bus.should_not be_valid
+      end
+
+    end
+
     it "should validate_presence_of :time" do
       bus.should be_valid
       bus.time = nil

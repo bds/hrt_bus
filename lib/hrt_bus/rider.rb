@@ -11,7 +11,7 @@ module HrtBus
     validates_numericality_of :lat, greater_than: 0
     validates_numericality_of :lon, less_than: 0
 
-    validates :id, :time, :lat, :lon, :route_id, :presence => true
+    validates :time, :lat, :lon, :route_id, :presence => true
 
     def initialize(attributes={})
       self.attributes = attributes
@@ -32,6 +32,10 @@ module HrtBus
 
     def read_attribute_for_validation(key)
       send(key)
+    end
+
+    def buses
+      HrtBus::Bus.active_buses.select { |bus| bus.route_id == self.route_id }
     end
 
   end

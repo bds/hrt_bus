@@ -38,9 +38,15 @@ module HrtBus
       send(key)
     end
 
+    def distance_to_bus
+      return 999999999 unless bus.present?
+      distance = Haversine.distance(self.lat.to_f, self.lon.to_f, bus.lat.to_f, bus.lon.to_f)
+      distance.to_miles
+    end
+
     def bus
-      HrtBus::Bus.active_buses.select { |bus| (bus.route_id  == self.route_id) &&
-                                              (bus.direction == self.direction) }.last
+      @bus ||= HrtBus::Bus.active_buses.select { |bus| (bus.route_id  == self.route_id) &&
+                                                       (bus.direction == self.direction) }.last
     end
 
   end

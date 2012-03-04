@@ -5,6 +5,7 @@ require 'active_support/core_ext/object'
 require 'csv'
 require 'curb'
 require 'googlestaticmap'
+require 'haversine'
 
 require "hrt_bus/version"
 require "hrt_bus/config"

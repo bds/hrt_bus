@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "yajl-ruby"
   s.add_dependency "curb"
   s.add_dependency "googlestaticmap"
+  s.add_dependency "haversine"
   s.add_development_dependency "webmock"
   s.add_development_dependency "rspec"
   s.add_development_dependency "interactive_editor"

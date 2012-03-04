@@ -20,4 +20,5 @@
 
 * Added Rider model
 * Find buses by route_id and direction
+* Use Haversine to calculate distance between bus and rider
 

@@ -2,31 +2,50 @@
 
 Ruby gem for public HRT bus location data
 
-### Installation
+## Installation
 
     gem install hrt_bus
 
-### A collection of HRT buses as Ruby ActiveModel objects
+## Examples
+
+### HRT bus for a specific route as Ruby ActiveModel object
+
+    HrtBus::Rider.new(:route_id => "15", :direction => "inbound").bus
+
+    #<HrtBus::Bus:0x10151b380
+        attr_accessor :id = "2020",
+        attr_accessor :lat = "36.9161257",
+        attr_accessor :lon = "-76.3075035",
+        attr_accessor :route_id = "15",
+        attr_accessor :time = Sat, 03 Mar 2012 21:15:34 +0000,
+    >
+
+### Generate a static Google Map for a bus
+
+    HrtBus::Rider.new(:route_id => "15", :direction => "outbound").bus.static_map
+
+![map](http://github.com/bds/hrt_bus/raw/master/examples/map.png)
+
+### A collection of active HRT buses
 
     ruby-1.9.2-p180 :001 > HrtBus::Bus.active_buses
 
     [
-        [0] #<HrtBus::Bus:0x101841ac8
-            attr_accessor :id = "4020",
-            attr_accessor :lat = "36.8088548",
-            attr_accessor :lon = "-76.3534049",
-            attr_accessor :route_id = "105",
-            attr_accessor :time = #<DateTime:0x101876408
-            >
+        [ 0] #<HrtBus::Bus:0x10290a5f8
+            attr_accessor :id = "1810",
+            attr_accessor :lat = "36.8596125",
+            attr_accessor :lon = "-76.2845262",
+            attr_accessor :route_id = "6",
+            attr_accessor :time = Sat, 03 Mar 2012 21:15:10 +0000,
         >,
-        [1] #<HrtBus::Bus:0x100a44c68
-            attr_accessor :id = "1233",
-            attr_accessor :lat = "36.9181620",
-            attr_accessor :lon = "-76.1926839",
-            attr_accessor :route_id = "8",
-            attr_accessor :time = #<DateTime:0x100a44e20
-            >
-        >
+        [ 1] #<HrtBus::Bus:0x10138af48
+            attr_accessor :id = "2020",
+            attr_accessor :lat = "36.9161257",
+            attr_accessor :lon = "-76.3075035",
+            attr_accessor :route_id = "15",
+            attr_accessor :time = Sat, 03 Mar 2012 21:15:34 +0000,
+        >,
+
     ]
     ...
      
@@ -55,16 +74,6 @@ Ruby gem for public HRT bus location data
        }
     ]
     ...
-
-### Buses from a specific route
-
-    HrtBus::Bus.active_buses.select { |bus| bus.route_id == "105" }
-
-### Generate a static Google Map for a bus
-
-    HrtBus::Bus.active_buses.select { |bus| bus.route_id == "105" }.first.static_map
-
-![map](http://github.com/bds/hrt_bus/raw/master/examples/map.png)
 
 ### Determine if a bus is valid
 

@@ -3,15 +3,19 @@ module HrtBus
     include ActiveModel::Validations
     include ActiveModel::Serializers::JSON
 
-    ATTRIBUTES = [ :id, :time, :lat, :lon, :route_id ]
+    ATTRIBUTES = [ :id, :direction, :time, :lat, :lon, :route_id ]
+
+    DIRECTIONS = { "1" => "inbound",
+                   "2" => "outbound" }.freeze
 
     attr_accessor *ATTRIBUTES
 
     validates_numericality_of :route_id, greater_than: 0
     validates_numericality_of :lat, greater_than: 0, :if => :lat
     validates_numericality_of :lon, less_than: 0,    :if => :lon
+    validates :direction, :inclusion => { :in => DIRECTIONS.values }
 
-    validates :route_id, :presence => true
+    validates :route_id, :direction, :presence => true
 
     def initialize(attributes={})
       self.attributes = attributes
@@ -35,7 +39,8 @@ module HrtBus
     end
 
     def bus
-      HrtBus::Bus.active_buses.select { |bus| bus.route_id == self.route_id }.last
+      HrtBus::Bus.active_buses.select { |bus| (bus.route_id  == self.route_id) &&
+                                              (bus.direction == self.direction) }.last
     end
 
   end

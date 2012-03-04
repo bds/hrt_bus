@@ -7,11 +7,11 @@ describe HrtBus::Rider do
 
     use_vcr_cassette
 
-    context "when the server responds with 226" do
+    describe "when the server responds with 226" do
 
-      context "when there are NO bus that match the riders route" do
+      context "there are NO bus that match the riders route" do
 
-        let(:bus) { Factory.build(:rider, :route_id => "999999").bus }
+        let(:bus) { Factory.build(:rider, :route_id => "999999", :direction => "inbound").bus }
 
         it "it should return nil" do
           bus.should be_nil
@@ -19,26 +19,45 @@ describe HrtBus::Rider do
 
       end
 
-      context "when there is only one bus that matches the riders route" do
+      context "there is one bus that matches the riders route" do
 
-        let(:bus) { Factory.build(:rider, :route_id => "6").bus }
-
-        it "should return only one bus that matches the riders route" do
-          bus.should be_a_kind_of(HrtBus::Bus)
-          bus.should be_valid
-          bus.route_id.should == "6"
-        end
-
-      end
-
-      context "when there are more than one bus that matches the riders route" do
-
-        let(:bus) { Factory.build(:rider, :route_id => "111").bus }
+        let(:bus) { Factory.build(:rider, :route_id => "111", :direction => "outbound").bus }
 
         it "should return only one bus that matches the riders route" do
           bus.should be_a_kind_of(HrtBus::Bus)
           bus.should be_valid
           bus.route_id.should == "111"
+          bus.direction.should == "outbound"
+        end
+
+      end
+
+      context "there are outbound and inbound buses that match the riders route" do
+
+        context "inbound" do
+
+          let(:bus) { Factory.build(:rider, :route_id => "6", :direction => "inbound").bus }
+
+          it "should return a inbound bus that matches the riders route" do
+            bus.direction.should == "inbound"
+            bus.should be_a_kind_of(HrtBus::Bus)
+            bus.should be_valid
+            bus.route_id.should == "6"
+          end
+
+        end
+
+        context "outbound" do
+
+          let(:bus) { Factory.build(:rider, :route_id => "6", :direction => "outbound").bus }
+
+          it "should return a outbound bus that matches the riders route" do
+            bus.direction.should == "outbound"
+            bus.should be_a_kind_of(HrtBus::Bus)
+            bus.should be_valid
+            bus.route_id.should == "6"
+          end
+
         end
 
       end

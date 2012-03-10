@@ -25,3 +25,6 @@
 
 * Use Haversine to calculate distance between bus and rider
 
+> 0.0.7
+
+* Added adherence attribute to Bus

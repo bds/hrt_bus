@@ -1,6 +1,6 @@
 # hrt_bus
 
-Ruby gem for public HRT bus location data
+Ruby gem for real-time Hampton Roads Transit bus location data
 
 ## Installation
 
@@ -8,7 +8,7 @@ Ruby gem for public HRT bus location data
 
 ## Examples
 
-### HRT bus as a Ruby ActiveModel object
+### A Bus as a Ruby ActiveModel object
 
     HrtBus::Rider.new(:route_id => "20", :direction => "inbound").bus
 
@@ -20,6 +20,27 @@ Ruby gem for public HRT bus location data
       attr_accessor :route_id = "20",
       attr_accessor :time = Sat, 03 Mar 2012 23:24:28 +0000,
     >
+
+### Is my bus late?
+
+    HrtBus::Rider.new(:route_id => "20", :direction => "inbound").bus.late?
+
+### Send yourself a SMS or Tweet when your bus is close!
+
+    (1..15).each do |i|
+
+      rider =  HrtBus::Rider.new(:route_id  => "2",
+                                 :direction => "inbound",
+                                 :lat       => "36.870347",
+                                 :lon       => "-76.301163" )
+
+      if rider.bus.present? && rider.distance_to_bus <= 3
+        # Do something really cool like send a SMS or Tweet!
+      end
+
+      sleep 30
+
+    end
 
 ### Generate a static Google Map for a bus
 
@@ -54,27 +75,6 @@ Ruby gem for public HRT bus location data
        }
     ]
     ...
-
-### Determine if a bus is valid
-
-    HrtBus::Bus.active_buses.select { |bus| bus.route_id => "2" }.first.valid?
-
-### Send yourself a SMS or Tweet when your bus is close!
-
-    (1..15).each do |i|
-
-      rider =  HrtBus::Rider.new(:route_id  => "2",
-                                 :direction => "inbound",
-                                 :lat       => "36.870347",
-                                 :lon       => "-76.301163" )
-
-      if rider.bus.present? && rider.distance_to_bus <= 3
-        # Do something really cool like send a SMS or Tweet!
-      end
-
-      sleep 30
-
-    end
 
 ## Contributing to hrt_bus
  

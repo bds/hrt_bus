@@ -11,6 +11,7 @@ describe HrtBus::Bus do
 
       it "should return a collection of valid buses" do
         buses.should be_a_kind_of(Enumerable) 
+        buses.should_not be_empty
         buses.each { |bus| bus.should be_valid }
         buses.first.should be_a_kind_of(HrtBus::Bus) 
       end
@@ -44,4 +45,5 @@ describe HrtBus::Bus do
     end
 
   end
+
 end

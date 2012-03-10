@@ -72,6 +72,20 @@ describe HrtBus::Bus do
       bus.errors.messages[:route_id].first.should match(/is not a number/)
     end
 
+    it "should validate_presence_of :adherence" do
+      bus.should be_valid
+      bus.adherence = nil
+      bus.should_not be_valid
+      bus.errors.messages[:adherence].first.should match(/is not a number/)
+    end
+
+    it "should validate_numericality :adherence" do
+      bus.should be_valid
+      bus.adherence = "late"
+      bus.should_not be_valid
+      bus.errors.messages[:adherence].first.should match(/is not a number/)
+    end
+
   end
 
 end

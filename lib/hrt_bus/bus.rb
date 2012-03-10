@@ -39,6 +39,18 @@ module HrtBus
       send(key)
     end
 
+    def early?
+      self.adherence < 0
+    end
+
+    def ontime?
+      self.adherence == 0
+    end
+
+    def late?
+      self.adherence > 0
+    end
+
     def static_map
       map = GoogleStaticMap.new(:width => 960, :height => 640)
       map.markers << MapMarker.new(:color => "blue",

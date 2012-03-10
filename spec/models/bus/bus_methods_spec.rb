@@ -46,4 +46,79 @@ describe HrtBus::Bus do
 
   end
 
+  describe "early?" do
+
+    context "the bus is early" do
+      it "should return true" do
+        bus = Factory.build(:bus, :adherence => -2)
+        bus.early?.should be_true
+      end
+    end
+
+    context "the bus is on time" do
+      it "should return false" do
+        bus = Factory.build(:bus, :adherence => 0)
+        bus.early?.should be_false
+      end
+    end
+
+    context "the bus is late" do
+      it "should return false" do
+        bus = Factory.build(:bus, :adherence => 4)
+        bus.early?.should be_false
+      end
+    end
+
+  end
+
+  describe "ontime?" do
+
+    context "the bus is early" do
+      it "should return false" do
+        bus = Factory.build(:bus, :adherence => -2)
+        bus.ontime?.should be_false
+      end
+    end
+
+    context "the bus is on time" do
+      it "should return true" do
+        bus = Factory.build(:bus, :adherence => 0)
+        bus.ontime?.should be_true
+      end
+    end
+
+    context "the bus is late" do
+      it "should return false" do
+        bus = Factory.build(:bus, :adherence => 4)
+        bus.ontime?.should be_false
+      end
+    end
+
+  end
+
+  describe "late?" do
+
+    context "the bus is early" do
+      it "should return false" do
+        bus = Factory.build(:bus, :adherence => -2)
+        bus.late?.should be_false
+      end
+    end
+
+    context "the bus is on time" do
+      it "should return true" do
+        bus = Factory.build(:bus, :adherence => 0)
+        bus.late?.should be_false
+      end
+    end
+
+    context "the bus is late" do
+      it "should return false" do
+        bus = Factory.build(:bus, :adherence => 4)
+        bus.late?.should be_true
+      end
+    end
+
+  end
+
 end

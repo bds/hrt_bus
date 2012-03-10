@@ -28,3 +28,4 @@
 > 0.0.7
 
 * Added adherence attribute to Bus
+* @bus.early? @bus.ontime? @bus.late?

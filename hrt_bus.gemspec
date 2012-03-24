@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = HrtBus::VERSION
   s.authors     = ["Brian Douglas Smith"]
   s.email       = ["m.b1205@gmail.com"]
-  s.homepage    = "https://github.com/CfABrigadeHamptonRoads/hrt_bus"
+  s.homepage    = "https://github.com/bds/hrt_bus"
   s.summary     = %q{Real-time Hampton Roads Transit bus location data}
-  s.description = %q{HRT bus number, route, distance to rider, earlylontime/late and more!}
+  s.description = %q{Bus number, route, GPS coordiantes, early/ontime/late and more}
 
   s.rubyforge_project = "hrt_bus"
 

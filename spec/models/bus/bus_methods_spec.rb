@@ -38,7 +38,7 @@ describe HrtBus::Bus do
 
   describe "static_map" do
     use_vcr_cassette
-    let(:bus) { Factory.build(:bus) }
+    let(:bus) { FactoryGirl.build(:bus) }
 
     it "should return a string of bytes" do
       bus.static_map.should be_a_kind_of(String)
@@ -50,21 +50,21 @@ describe HrtBus::Bus do
 
     context "the bus is early" do
       it "should return true" do
-        bus = Factory.build(:bus, :adherence => -2)
+        bus = FactoryGirl.build(:bus, :adherence => -2)
         bus.early?.should be_true
       end
     end
 
     context "the bus is on time" do
       it "should return false" do
-        bus = Factory.build(:bus, :adherence => 0)
+        bus = FactoryGirl.build(:bus, :adherence => 0)
         bus.early?.should be_false
       end
     end
 
     context "the bus is late" do
       it "should return false" do
-        bus = Factory.build(:bus, :adherence => 4)
+        bus = FactoryGirl.build(:bus, :adherence => 4)
         bus.early?.should be_false
       end
     end
@@ -75,21 +75,21 @@ describe HrtBus::Bus do
 
     context "the bus is early" do
       it "should return false" do
-        bus = Factory.build(:bus, :adherence => -2)
+        bus = FactoryGirl.build(:bus, :adherence => -2)
         bus.ontime?.should be_false
       end
     end
 
     context "the bus is on time" do
       it "should return true" do
-        bus = Factory.build(:bus, :adherence => 0)
+        bus = FactoryGirl.build(:bus, :adherence => 0)
         bus.ontime?.should be_true
       end
     end
 
     context "the bus is late" do
       it "should return false" do
-        bus = Factory.build(:bus, :adherence => 4)
+        bus = FactoryGirl.build(:bus, :adherence => 4)
         bus.ontime?.should be_false
       end
     end
@@ -100,21 +100,21 @@ describe HrtBus::Bus do
 
     context "the bus is early" do
       it "should return false" do
-        bus = Factory.build(:bus, :adherence => -2)
+        bus = FactoryGirl.build(:bus, :adherence => -2)
         bus.late?.should be_false
       end
     end
 
     context "the bus is on time" do
       it "should return true" do
-        bus = Factory.build(:bus, :adherence => 0)
+        bus = FactoryGirl.build(:bus, :adherence => 0)
         bus.late?.should be_false
       end
     end
 
     context "the bus is late" do
       it "should return false" do
-        bus = Factory.build(:bus, :adherence => 4)
+        bus = FactoryGirl.build(:bus, :adherence => 4)
         bus.late?.should be_true
       end
     end

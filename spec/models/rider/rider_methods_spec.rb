@@ -9,7 +9,7 @@ describe HrtBus::Rider do
     describe "when there is a bus for the Riders route" do
 
       before do
-         @rider = Factory.build(:rider, :route_id => "111", :direction => "outbound")
+         @rider = FactoryGirl.build(:rider, :route_id => "111", :direction => "outbound")
          @bus   = @rider.bus
       end
 
@@ -24,7 +24,7 @@ describe HrtBus::Rider do
       use_vcr_cassette
 
       before do
-         @rider = Factory.build(:rider, :route_id => "50000", :direction => "outbound")
+         @rider = FactoryGirl.build(:rider, :route_id => "50000", :direction => "outbound")
          @bus   = @rider.bus
       end
 
@@ -43,7 +43,7 @@ describe HrtBus::Rider do
 
       context "when there are NO bus that match the riders route" do
 
-        let(:bus) { Factory.build(:rider, :route_id => "999999", :direction => "inbound").bus }
+        let(:bus) { FactoryGirl.build(:rider, :route_id => "999999", :direction => "inbound").bus }
 
         it "should return nil" do
           bus.should be_nil
@@ -53,7 +53,7 @@ describe HrtBus::Rider do
 
       context "when a bus matches a riders route and is greater than 3 miles away" do
 
-        before { @rider = Factory.build(:rider, :route_id => "6", :direction => "inbound") }
+        before { @rider = FactoryGirl.build(:rider, :route_id => "6", :direction => "inbound") }
         let(:bus) { @rider.bus }
 
         it "should match the riders route" do
@@ -71,7 +71,7 @@ describe HrtBus::Rider do
 
       context "when a bus matches the riders route and is nearer than 3 miles" do
 
-        before { @rider = Factory.build(:rider, :route_id => "111", :direction => "outbound") }
+        before { @rider = FactoryGirl.build(:rider, :route_id => "111", :direction => "outbound") }
         let(:bus) { @rider.bus }
 
         it "should match the riders route" do
@@ -92,7 +92,7 @@ describe HrtBus::Rider do
 
         context "inbound" do
 
-          let(:bus) { Factory.build(:rider, :route_id => "6", :direction => "inbound").bus }
+          let(:bus) { FactoryGirl.build(:rider, :route_id => "6", :direction => "inbound").bus }
 
           it "should return a inbound bus that matches the riders route" do
             bus.direction.should == "inbound"
@@ -105,7 +105,7 @@ describe HrtBus::Rider do
 
         context "outbound" do
 
-          let(:bus) { Factory.build(:rider, :route_id => "6", :direction => "outbound").bus }
+          let(:bus) { FactoryGirl.build(:rider, :route_id => "6", :direction => "outbound").bus }
 
           it "should return a outbound bus that matches the riders route" do
             bus.direction.should == "outbound"

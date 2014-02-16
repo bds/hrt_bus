@@ -4,7 +4,7 @@ require 'factories/rider'
 describe HrtBus::Rider do
   describe "validations" do
 
-    let(:rider) { Factory.build(:rider) }
+    let(:rider) { FactoryGirl.build(:rider) }
 
     it "should validate_presence_of :route_id" do
       rider.should be_valid

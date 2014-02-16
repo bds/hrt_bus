@@ -4,7 +4,7 @@ require 'factories/bus'
 describe HrtBus::Bus do
   describe "validations" do
 
-    let(:bus) { Factory.build(:bus) }
+    let(:bus) { FactoryGirl.build(:bus) }
 
     it "should validate_presence_of :id" do
       bus.should be_valid
